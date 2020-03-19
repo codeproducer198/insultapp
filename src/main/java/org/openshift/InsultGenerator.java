@@ -10,6 +10,8 @@ public class InsultGenerator {
 		String article = "an";
 		String theInsult = "";
 
+		System.out.println("Enter generator.");
+		
 		try {
 			String databaseURL = "jdbc:postgresql://";
 			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
@@ -27,9 +29,12 @@ public class InsultGenerator {
 					if (vowels.indexOf(rs.getString("first").charAt(0)) == -1) {
 						article = "a";
 					}
-
+			
 					theInsult = String.format("Thou art %s %s %s %s!", article,
 						rs.getString("first"), rs.getString("second"), rs.getString("noun"));
+					
+					System.out.println("send result: " + theInsult);
+
 				}
 				rs.close();
 				connection.close();
